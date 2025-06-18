@@ -8,6 +8,8 @@ const app = express(); // Initialize express app
 const PORT = process.env.PORT || 3000; // Default port is 3000 if not specified in .env
 console.log({ PORT }); // Log the port to verify it's being set correctly
 
+app.use(express.json()); // Middleware to parse JSON request bodies
+
 app.use('/api/auth', authRoutes); // Use the authentication routes under the /api/auth path
 
 app.listen(PORT, () => {
