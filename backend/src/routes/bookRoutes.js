@@ -1,10 +1,11 @@
 import express from 'express';
 import cloudinary from '../lib/cloudinary.js';
 import Book from '../models/Book.js';
+import protectRoute from '../middleware/auth.middleware.js';
 
 const router = express.Router(); // Create a new router instance
 
-router.post('/', async (req, res) => {
+router.post('/', protectRoute, async (req, res) => {
   try {
     // Check if the request body contains the required fields
     const { title, caption, image, rating } = req.body; // Destructure the request body to get book details
@@ -18,13 +19,16 @@ router.post('/', async (req, res) => {
     const imageUrl = uploadResponse.secure_url;
 
     // Create a new book object with the provided details and the uploaded image URL
-    const newBook = {
+    const newBook = new Book({
       title,
       caption,
       image: imageUrl, // Use the uploaded image URL
       rating: parseFloat(rating), // Convert rating to a float
       owner: req.user._id, // Get the owner's ID from the authenticated user
-    };
+    });
+
+    await newBook.save(); // Save the new book to the database
+    res.status(201).json(newBook); // Return the created book in the response >> 201 Resource Created
   } catch (error) {}
 });
 
