@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import 'dotenv/config';
 
 import authRoutes from './routes/authRoutes.js'; // Import the authentication routes
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 3000; // Default port is 3000 if not specified 
 console.log({ PORT }); // Log the port to verify it's being set correctly
 
 app.use(express.json()); // Middleware to parse JSON request bodies
+app.use(cors()); // Enable CORS for all routes
 
 app.use('/api/auth', authRoutes); // Use the authentication routes under the /api/auth path
 app.use('/api/books', bookRoutes); // Use the book routes under the /api/books path'
