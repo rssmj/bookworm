@@ -74,6 +74,8 @@ router.get('/user', protectRoute, async (req, res) => {
   }
 });
 
+// Route to delete a book by ID
+// This route is protected, meaning only authenticated users can access it
 router.delete('/:id', protectRoute, async (req, res) => {
   try {
     const book = await Book.findById(req.params.id); // Find the book by ID from the request parameters
