@@ -4,7 +4,7 @@ import { Link } from 'expo-router';
 export default function Index() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>welcome sup loser ha you suck na na</Text>
+      <Text style={styles.title}>BookWorm🐛</Text>
 
       <Link href='/(auth)/signup'>Signup</Link>
       <Link href='/(auth)'>Login</Link>
@@ -19,6 +19,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    color: 'blue',
+    color: 'green',
+    fontSize: 32,
+    fontWeight: 'bold',
+    fontFamily: 'JetBrainsMono-Medium',
+    marginBottom: 20,
   },
 });

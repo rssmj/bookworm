@@ -18,7 +18,7 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [isloading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = () => {};
 
@@ -28,7 +28,6 @@ export default function Login() {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <View style={styles.container}>
-        <Text>Login Screen</Text>
         {/* Illistration */}
         <View style={styles.topIllustration}>
           <Image
@@ -96,10 +95,10 @@ export default function Login() {
             <TouchableOpacity
               style={styles.button}
               onPress={handleLogin}
-              disabled={isloading}
+              disabled={isLoading}
             >
-              {isloading ? (
-                <ActivityIndicator color='#fff' />
+              {isLoading ? (
+                <ActivityIndicator color={COLORS.white} />
               ) : (
                 <Text style={styles.buttonText}>Login</Text>
               )}
